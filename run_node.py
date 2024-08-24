@@ -26,4 +26,5 @@ if __name__ == '__main__':
     loop = asyncio.get_event_loop()
     loop.create_task(raft.register_as_server(addresses=[node_address], loop=loop))
     loop.create_task(raft.register_as_client(addresses=cluster_addresses, loop=loop))
+    # loop.run_forever()
     loop.run_until_complete(run(hostname))
