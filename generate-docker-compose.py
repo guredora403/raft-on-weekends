@@ -13,14 +13,10 @@ def generate_docker_compose(num_nodes):
             'container_name': node_name,
             'environment': [
                 f'NODE={node_name}',
-                f'CLUSTER={",".join([f"node{j}" for j in range(1, num_nodes + 1)])}'
+                f'CLUSTER={cluster}'
             ],
             'ports': [f'808{i}:8080'],
-            'command': [
-                'python', 'run_node.py',
-                '--node', '0.0.0.0',
-                '--cluster', cluster
-            ],
+            'command': ["python", "run_node.py", "--node", "0.0.0.0", "--cluster", cluster],
             'networks': [network_name]
         }
 

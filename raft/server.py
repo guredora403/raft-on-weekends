@@ -30,15 +30,13 @@ class Node:
         self.port = port
         self.loop = loop
         self.is_client = is_client
-        # self.request = asyncio.Queue(self.loop)
         self.request = asyncio.Queue()
         self.__class__.cluster.append(self)
 
     # https://python-doc-ja.github.io/py35/library/asyncio-protocol.html
     async def start(self):
         protocol = UDPProtocol(queue=self.request, request_handler=self.request_handler, loop=self.loop)
-        address = (self.host if self.is_client else "0.0.0.0", self.port)
-        print("L to {}:{}".format(address[0], address[1]))
+        address = (self.host, self.port)
         if self.is_client:
             self.transport, _ = await asyncio.Task(
             self.loop.create_datagram_endpoint(protocol, remote_addr=address),
@@ -54,6 +52,7 @@ class Node:
         self.transport.close()
 
     def request_handler(self, data):
+        print("Received data: {}".format(data))
         pass
 
     async def send(self, data):
