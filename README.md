@@ -19,36 +19,24 @@ Delight 2024の夏合宿用。
 - Python 3.x (with pyyaml)
 
 
-## セットアップ手順
-
-1. **リポジトリをクローン**
-
-   ```bash
-   git clone https://github.com/mzhkz/raft-on-weekends.git
-   cd raft-on-weekends
-   ```
-
-2. **必要なライブラリをインストール**
-
-   ```bash
-   pip install pyyaml
-   ```
+## 日程と内容 
+日程と各種内容です。
+進捗状況によって、行う内容は変更します。
+各Docsは最低限の説明のみ記載しています。
+わかないことがあれば適宜メンターに相談するか、自分で調べて実装を進めることにする。
 
 
-3. **docker-composeファイルの作成**
+### 1日目
+実装に必要な知識の習得
+- [イントロダクション(0-intro.md)](docs/0-intro.md)
+- [主要なライブラリの説明(1-intro.md)](docs/1-library.md)
+- [Raftの説明(2-intro.md)](docs/2-raft.md)
 
-   ```bash
-   python generate_docker_compose.py <ノードの数>
-   ```
+### 2日目以降
+Pythonを用いた実装
+- [このレポジトリのファイル構成について(2-intro.md)](docs/3-repo.md)
 
-4. **docker-composeを用いてコンテナ（ノード）を作成**
+- [ハンズオンの説明(3-intro.md)](docs/4-handson.md)
 
-   ```bash
-   docker compose up -d --build
-   ```
-
-5. **開発ログを見る場合**
-
-   ```bash
-   docker logs node{1~ノードの数} -f
-   ```
+## 問い合わせ
+moz [at] sfc.wide.ad.jp
