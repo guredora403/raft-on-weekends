@@ -5,7 +5,7 @@ class UDPProtocol(asyncio.DatagramProtocol):
     def __init__(self, queue, request_handler, loop):
         self.queue = queue
         self.request_handler = request_handler
-        self.selializer = MessagePackSerializer
+        self.serializer = MessagePackSerializer
         self.loop = loop
 
     def __call__(self):
@@ -14,8 +14,8 @@ class UDPProtocol(asyncio.DatagramProtocol):
     async def start(self):
         while not self.transport.is_closing():
             request = await self.queue.get()
-            data = self.serializer.pack(request["data"])
-            self.transport.sendto(data, request["destination"]) 
+            data = self.serializer.pack(request)
+            self.transport.sendto(data, None)
 
     def connection_made(self, transport):
         self.transport = transport

@@ -7,10 +7,8 @@ async def run(node_address):
         await asyncio.sleep(5)
         command = "hello world from {}".format(node_address[0])
         for node in raft.Node.cluster: # Send to all nodes (broadcast)
-            address = (node.host, node.port)
-            if address != node_address: # Don't send to self
-                print(address)
-                await node.send(command, *address)
+            if node.is_client: # Don't send to self
+                await node.send(command)
 
 
 
@@ -25,5 +23,6 @@ if __name__ == '__main__':
 
 
     loop = asyncio.get_event_loop()
-    loop.create_task(raft.register(host=node_address, addresses=cluster_addresses, loop=loop))
+    loop.create_task(raft.register_as_server(addresses=[node_address], loop=loop))
+    loop.create_task(raft.register_as_client(addresses=cluster_addresses, loop=loop))
     loop.run_until_complete(run(node_address))

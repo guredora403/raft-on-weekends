@@ -1,12 +1,18 @@
 import asyncio
 from .network import UDPProtocol
 
-async def register(host, addresses, loop):
+
+async def register_as_server(addresses, loop):
     for address in addresses:
         if address not in Node.cluster:
-            node = Node(*address, loop)
-            client = host != address
-            await node.start(client)
+            node = Node(*address, loop, is_client=False)
+            await node.start()
+
+async def register_as_client(addresses, loop):
+    for address in addresses:
+        if address not in Node.cluster:
+            node = Node(*address, loop, is_client=True)
+            await node.start()
 
 
 def stop():
@@ -19,28 +25,30 @@ class Node:
 
     cluster = []
 
-    def __init__(self, host, port, loop):
+    def __init__(self, host, port, loop, is_client=False):
         self.host = host
         self.port = port
         self.loop = loop
-        self.request = asyncio.Queue(self.loop)
+        self.is_client = is_client
+        # self.request = asyncio.Queue(self.loop)
+        self.request = asyncio.Queue()
         self.__class__.cluster.append(self)
 
     # https://python-doc-ja.github.io/py35/library/asyncio-protocol.html
-    async def start(self, client=True):
+    async def start(self):
         protocol = UDPProtocol(queue=self.request, request_handler=self.request_handler, loop=self.loop)
-        address = (self.host, self.port)
-        print("Starting node on {}:{}".format(address[0], address[1]))
-        if client:
+        address = (self.host if self.is_client else "0.0.0.0", self.port)
+        print("L to {}:{}".format(address[0], address[1]))
+        if self.is_client:
             self.transport, _ = await asyncio.Task(
             self.loop.create_datagram_endpoint(protocol, remote_addr=address),
-            loop=self.loop
-        )
+            loop=self.loop)
+            print("Connecting to {}:{}".format(address[0], address[1]))
         else:
             self.transport, _ = await asyncio.Task(
             self.loop.create_datagram_endpoint(protocol, local_addr=address),
-            loop=self.loop
-        )
+            loop=self.loop)
+            print("Starting node on {}:{}".format(address[0], address[1]))
 
     def stop(self):
         self.transport.close()
@@ -48,6 +56,7 @@ class Node:
     def request_handler(self, data):
         pass
 
-    async def send(self, data, destination_host, destination_port):
-        destination = (destination_host, destination_port)
-        await self.request.put({"data": data, "destination": destination})
+    async def send(self, data):
+        if not self.is_client:
+            raise Exception("Only clients can send data")
+        await self.request.put({"data": data})
