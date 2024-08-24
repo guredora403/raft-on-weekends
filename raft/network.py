@@ -1,5 +1,6 @@
 import asyncio
 from .serializers import MessagePackSerializer
+from .logger import logger
 
 class UDPProtocol(asyncio.DatagramProtocol):
     def __init__(self, queue, request_handler, loop):
@@ -27,7 +28,12 @@ class UDPProtocol(asyncio.DatagramProtocol):
        self.request_handler(data)
 
     def error_received(self, exc):
-        print('Error received:', exc)
+        logger.error('Error received:', exc)
 
     def connection_lost(self, exc):
-        print('Connection lost:', exc)
+        logger.warning('Connection lost:', exc)
+
+
+def convert_ipv4_to_hostname(ip):
+    node_id = str(int(ip.split('.')[3])-1)
+    return f"node{node_id}"

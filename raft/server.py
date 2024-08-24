@@ -1,5 +1,6 @@
 import asyncio
-from .network import UDPProtocol
+from .network import UDPProtocol, convert_ipv4_to_hostname
+from .logger import logger
 
 
 async def register_as_server(addresses, loop):
@@ -41,19 +42,20 @@ class Node:
             self.transport, _ = await asyncio.Task(
             self.loop.create_datagram_endpoint(protocol, remote_addr=address),
             loop=self.loop)
-            print("Connecting to {}:{}".format(address[0], address[1]))
+            logger.info("Connecting to {}:{}".format(address[0], address[1]))
         else:
             self.transport, _ = await asyncio.Task(
             self.loop.create_datagram_endpoint(protocol, local_addr=address),
             loop=self.loop)
-            print("Starting node on {}:{}".format(address[0], address[1]))
+            logger.info("Starting node on {}:{}".format(address[0], address[1]))
 
     def stop(self):
         self.transport.close()
 
     def request_handler(self, data):
-        print("Received data: {}".format(data))
-        pass
+        received_from = convert_ipv4_to_hostname(data["sender"][0])
+        logger.info("Received data: {} from {}".format(data["data"], received_from))
+
 
     async def send(self, data):
         if not self.is_client:
