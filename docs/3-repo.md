@@ -14,6 +14,8 @@
 - `generate_docker_compose.py`: 指定されたノード数に基づいて`docker-compose.yml`を動的に生成するPythonスクリプト。
 - `raft/*.py`: Raftを実装するためのコードです。基本的に`raft/state.py`を編集することになります。
 
+ひな形は用意してありますが、それぞれどのような実装になっているのか目を通してみよう!
+
 ## 必要な環境
 
 - Docker
@@ -37,20 +39,25 @@
    ```
 
 
-3. **docker-composeファイルの作成**
+3. **docker-composeファイル（Raftクラスターの構成ファイル）の作成**
 
    ```bash
    python generate_docker_compose.py <ノードの数>
    ```
 
-4. **docker-composeを用いてコンテナ（ノード）を作成**
+4. **docker-composeを用いてクラスター（ノード群）を作成&起動**
 
    ```bash
    docker compose up -d --build
    ```
 
-5. **開発ログを見る場合**
+5. **ある特定のノードのログ（開発ログ等）を見る場合**
 
    ```bash
    docker logs node{1~ノードの数} -f
    ```
+
+6. **クラスターの停止(削除含む)**
+```bash
+   docker compose down
+```

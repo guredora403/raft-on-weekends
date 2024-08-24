@@ -18,7 +18,7 @@ Delight 2024の夏合宿用。
 ### 1日目
 実装に必要な知識の習得
 - [イントロダクション(0-intro.md)](docs/0-intro.md)
-- [主要なライブラリの説明(1-library.md)](docs/1-library.md)
+- [並列処理入門(1-parallel-pcoessing.md)](docs/1-parallel-pcoessing.md)
 - [Raftの説明(2-raft.md)](docs/2-raft.md)
 
 ### 2日目以降
