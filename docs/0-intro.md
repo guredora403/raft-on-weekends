@@ -15,7 +15,7 @@ Delightの夏合宿用のRaftレポジトリです。
 ### 1日目
 実装に必要な知識の習得
 - [イントロダクション(0-intro.md)](0-intro.md)
-- [主要なライブラリの説明(1-library.md)](1-library.md)
+- [並列処理入門(1-parallel-pcoessing.md)](1-parallel-pcoessing.md)
 - [Raftの説明(2-raft.md)](2-raft.md)
 
 ### 2日目以降
