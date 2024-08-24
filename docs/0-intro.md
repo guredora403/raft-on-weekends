@@ -12,18 +12,17 @@ Delightの夏合宿用のRaftレポジトリです。
 各Docsは最低限の説明のみ記載しています。
 わかないことがあれば適宜メンターに相談するか、自分で調べて実装を進めることにする。
 
-
-1日目
+### 1日目
 実装に必要な知識の習得
 - [イントロダクション(0-intro.md)](0-intro.md)
-- [主要なライブラリの説明(1-intro.md)](1-library.md)
-- [Raftの説明(2-intro.md)](2-raft.md)
+- [主要なライブラリの説明(1-library.md)](1-library.md)
+- [Raftの説明(2-raft.md)](2-raft.md)
 
-2日目以降
+### 2日目以降
 Pythonを用いた実装
-- [このレポジトリのファイル構成について(2-intro.md)](3-repo.md)
+- [このレポジトリのファイル構成について(3-repo.md)](3-repo.md)
+- [ハンズオンの説明(4-handson.md)](4-handson.md)
 
-- [ハンズオンの説明(3-intro.md)](4-handson.md)
 
 ## 問い合わせ
 moz [at] sfc.wide.ad.jp

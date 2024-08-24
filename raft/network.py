@@ -7,7 +7,7 @@ class UDPProtocol(asyncio.DatagramProtocol):
         self.queue = queue
         self.request_handler = request_handler
         self.serializer = MessagePackSerializer
-        self.loop = loop
+        self.loop = loop or asyncio.get_event_loop()
 
     def __call__(self):
         return self

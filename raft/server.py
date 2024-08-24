@@ -1,6 +1,7 @@
 import asyncio
-from .network import UDPProtocol, convert_ipv4_to_hostname
+from .network import UDPProtocol
 from .logger import logger
+from .state import State
 
 
 async def register_as_server(addresses, loop):
@@ -22,17 +23,16 @@ def stop():
 
 
 class Node:
-    """Raft node implementation."""
-
     cluster = []
 
     def __init__(self, host, port, loop, is_client=False):
         self.host = host
         self.port = port
-        self.loop = loop
+        self.loop = loop or asyncio.get_event_loop()
         self.is_client = is_client
         self.request = asyncio.Queue()
         self.__class__.cluster.append(self)
+        self.state = State(self) if not is_client else None
 
     # https://python-doc-ja.github.io/py35/library/asyncio-protocol.html
     async def start(self):
@@ -47,17 +47,24 @@ class Node:
             self.transport, _ = await asyncio.Task(
             self.loop.create_datagram_endpoint(protocol, local_addr=address),
             loop=self.loop)
+            
+            # Start the state machine
+            self.loop.create_task(self.state.start())
             logger.info("Starting node on {}:{}".format(address[0], address[1]))
 
     def stop(self):
         self.transport.close()
 
     def request_handler(self, data):
-        received_from = convert_ipv4_to_hostname(data["sender"][0])
-        logger.info("Received data: {} from {}".format(data["data"], received_from))
+        self.state.request_handler(data)
 
 
     async def send(self, data):
         if not self.is_client:
             raise Exception("Only clients can send data")
         await self.request.put({"data": data})
+
+    async def broadcast(self, data):
+        for node in self.__class__.cluster:
+            if node.is_client:
+                await node.send(data)   
