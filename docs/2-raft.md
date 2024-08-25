@@ -1,6 +1,7 @@
 # Raft
 Raftはノード間でステートマシンの一貫性を担保するためのアルゴリズムです。
-このアルゴリズムは分散型データベースやブロックチェーン、コントロールプレーンなど、様々なデータストアで利活用されています。
+Raftは線形化可能性を保証します。
+したがって、このアルゴリズムは分散型データベースやブロックチェーン、コントロールプレーンなど、様々なデータストアで利活用されています。
 
 元論文: [In Search of an Understandable Consensus Algorithm - USENIX'14](https://www.usenix.org/system/files/conference/atc14/atc14-paper-ongaro.pdf)
 
