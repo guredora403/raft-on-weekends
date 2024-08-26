@@ -17,12 +17,12 @@ Delightの夏合宿用のRaftレポジトリです。
 - [イントロダクション(0-intro.md)](0-intro.md)
 - [並列処理入門(1-parallel-pcoessing.md)](1-parallel-pcoessing.md)
 - [一貫性モデル入門(2-consistency.md)](2-consistency.md)
-- [Raftの説明(2-raft.md)](2-raft.md)
+- [Raftの説明(3-raft.md)](3-raft.md)
 
 ### 2日目以降
 Pythonを用いた実装
-- [このレポジトリのファイル構成について(3-repo.md)](3-repo.md)
-- [ハンズオンの説明(4-handson.md)](4-handson.md)
+- [このレポジトリのファイル構成について(4-repo.md)](4-repo.md)
+- [ハンズオンの説明(5-handson.md)](5-handson.md)
 
 
 ## 問い合わせ

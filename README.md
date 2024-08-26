@@ -18,14 +18,14 @@ Delight 2024の夏合宿用。
 ### 1日目
 実装に必要な知識の習得
 - [イントロダクション(0-intro.md)](docs/0-intro.md)
-- [並列処理入門(1-parallel-pcoessing.md)](docs/1-parallel-pcoessing.md)
+- [並列/並行処理入門(1-parallel-pcoessing.md)](docs/1-parallel-pcoessing.md)
 - [一貫性モデル入門(2-consistency.md)](docs/2-consistency.md)
-- [Raftの説明(2-raft.md)](docs/2-raft.md)
+- [Raftの説明(3-raft.md)](docs/3-raft.md)
 
 ### 2日目以降
 Pythonを用いた実装
-- [このレポジトリのファイル構成について(3-repo.md)](docs/3-repo.md)
-- [ハンズオンの説明(4-handson.md)](docs/4-handson.md)
+- [このレポジトリのファイル構成について(4-repo.md)](docs/4-repo.md)
+- [ハンズオンの説明(5-handson.md)](docs/5-handson.md)
 
 ## 問い合わせ
 moz [at] sfc.wide.ad.jp
