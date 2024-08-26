@@ -9,6 +9,7 @@ PDF_FILES = $(patsubst %.md, ./dist/%.pdf, $(MD_FILES))
 # 結合後のPDFファイル名
 MERGED_PDF = ./dist/merged_output.pdf
 
+
 # デフォルトターゲット
 all: $(PDF_FILES) $(MERGED_PDF)
 

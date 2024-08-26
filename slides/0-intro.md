@@ -8,8 +8,8 @@ header: '2024/08/26 慶應義塾大学 SFC Delight 分散システムグルー�
 
 # Raft on Weekend
 
-**Riku Mochizuki**  
-moz@sfc.keio.ac.jp
+**Riku Mochizuki (moz)**  
+moz [at] sfc.keio.ac.jp
 
 ---
 
