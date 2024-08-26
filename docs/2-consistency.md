@@ -81,3 +81,4 @@
 - https://www.alexdebrie.com/posts/dynamodb-eventual-consistency/
 - https://www.sraoss.co.jp/tech-blog/db-special-lecture/masunaga-db-special-lecture-11/
 - https://www-higashi.ist.osaka-u.ac.jp/~nakata/mobile-cp/chap-06j-1.pdf
+- https://christina04.hatenablog.com/entry/causal-consistency
