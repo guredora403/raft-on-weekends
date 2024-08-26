@@ -1,13 +1,13 @@
 ---
 marp: true
-title: Raft
+title: Raft入門
 paginate: true
 header: '2024/08/26 Delight夏合宿Raftグループ'
 footer: 'Riku Mochizuki moz at sfc.keio.ac.jp'
 
 ---
 
-# Raft
+# Raft入門
 
 **Riku Mochizuki**  
 moz at sfc.keio.ac.jp
@@ -170,5 +170,3 @@ Raftの動作を視覚的に確認できるサイト:
 ## おすすめ文献
 
 - [Raft Presentation](https://www.slideshare.net/slideshow/raft-36155398/36155398#71)
-
----

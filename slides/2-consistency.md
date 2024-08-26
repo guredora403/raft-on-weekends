@@ -23,7 +23,7 @@ moz at sfc.keio.ac.jp
 
 ---
 
-# 一貫性の種類
+# 一貫性モデルの種類
 
 一貫性には二つの観点があります。
 
@@ -73,8 +73,6 @@ moz at sfc.keio.ac.jp
 
 ## 因果一貫性の詳細
 
-因果一貫性はさらに4つの一貫性に分けられます：
-
 - **モノトニック読み取り一貫性 (Monotonic-Read Consistency):**  
   クライアントがノードから値を読み込むと、以降の読み込みでは同じ値か新しい値が読み込まれる。
 
@@ -117,19 +115,17 @@ moz at sfc.keio.ac.jp
 設計するシステムに応じて適切な一貫性モデルを選択することが大切です。  
 例えばAmazonの[DynamoDB](https://aws.amazon.com/jp/dynamodb/)は結果整合性を保証します。
 
----
 
-## おことわり
-
-一部、図が適切ではない場合があります。ご了承ください。
 
 ---
 
 # 参考文献
 
 - 分散システム 原理とパラダイム
-- [Qiita: 分散システムにおける一貫性](https://qiita.com/kumagi/items/3867862c6be65328f89c)
-- [Yahoo Tech Blog: 一貫性モデル](https://techblog.yahoo.co.jp/architecture/2015-04-ditributed-consistency/)
-- [DynamoDB Eventual Consistency](https://www.alexdebrie.com/posts/dynamodb-eventual-consistency/)
-- その他多数...
+- https://qiita.com/kumagi/items/3867862c6be65328f89c
+- https://techblog.yahoo.co.jp/architecture/2015-04-ditributed-consistency/
+- https://www.alexdebrie.com/posts/dynamodb-eventual-consistency/
+- https://www.sraoss.co.jp/tech-blog/db-special-lecture/masunaga-db-special-lecture-11/
+- https://www-higashi.ist.osaka-u.ac.jp/~nakata/mobile-cp/chap-06j-1.pdf
+- https://christina04.hatenablog.com/entry/causal-consistency
 

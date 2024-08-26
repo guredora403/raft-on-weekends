@@ -2,6 +2,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,python,visualstudiocode
 
 test.py
+marged_output.md
 
 ### macOS ###
 # General
@@ -49,7 +50,6 @@ __pycache__/
 .Python
 build/
 develop-eggs/
-dist/
 downloads/
 eggs/
 .eggs/
