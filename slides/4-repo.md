@@ -2,7 +2,7 @@
 marp: true
 title: repo
 paginate: true
-header: '2024/08/26 Delight夏合宿Raftグループ'
+header: '2024/08/26 慶應義塾大学 SFC Delight 分散システムグループ  #レポジトリの説明'
 footer: 'Riku Mochizuki moz at sfc.keio.ac.jp'
 ---
 

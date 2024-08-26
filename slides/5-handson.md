@@ -2,7 +2,7 @@
 marp: true
 title: hands-on
 paginate: true
-header: '2024/08/26 Delight夏合宿Raftグループ'
+header: '2024/08/26 慶應義塾大学 SFC Delight 分散システムグループ  #ハンズオン'
 footer: 'Riku Mochizuki moz at sfc.keio.ac.jp'
 ---
 

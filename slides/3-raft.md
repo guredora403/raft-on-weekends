@@ -2,7 +2,7 @@
 marp: true
 title: Raft入門
 paginate: true
-header: '2024/08/26 Delight夏合宿Raftグループ'
+header: '2024/08/26 慶應義塾大学 SFC Delight 分散システムグループ  #Raft入門'
 footer: 'Riku Mochizuki moz at sfc.keio.ac.jp'
 
 ---
