@@ -4,6 +4,7 @@ title: 並列・並行処理基礎
 paginate: true
 header: '2024/08/26 慶應義塾大学 SFC Delight 分散システムグループ  #並行・並列処理基礎'
 footer: 'Riku Mochizuki moz at sfc.keio.ac.jp'
+theme: delight
 ---
 
 # 並列・並行処理基礎

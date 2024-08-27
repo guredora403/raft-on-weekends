@@ -4,6 +4,7 @@ title: 分散システムにおける一貫性
 paginate: true
 header: '2024/08/26 慶應義塾大学 SFC Delight 分散システムグループ  #一貫性モデル'
 footer: 'Riku Mochizuki moz at sfc.keio.ac.jp'
+theme: delight
 ---
 
 # 分散システムにおける一貫性
