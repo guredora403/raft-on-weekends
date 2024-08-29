@@ -2,7 +2,7 @@
 marp: true
 title: Raft on Weekend
 paginate: true
-footer: 'Riku Mochizuki moz@sfc.keio.ac.jp'
+footer: 'Riku Mochizuki moz [at] sfc.keio.ac.jp'
 header: '2024/08/26 慶應義塾大学 SFC Delight 分散システムグループ  #イントロ'
 theme: delight
 ---
@@ -18,7 +18,7 @@ moz [at] sfc.keio.ac.jp
 
 Delightの夏合宿用のRaftレポジトリです。  
 このレポジトリではRaftの実装を行います。  
-実装はこのDocsに沿って行います。
+座学と実装はこのスライドに沿って行います。
 
 ---
 
@@ -33,7 +33,7 @@ Delightの夏合宿用のRaftレポジトリです。
 
 ### 1日目
 
-実装に必要な知識の習得
+Raftの理解/実装に必要な知識の習得
 
 - [イントロダクション(0-intro.md)](0-intro.md)
 - [並列処理入門(1-parallel-pcoessing.md)](1-parallel-pcoessing.md)
@@ -44,7 +44,7 @@ Delightの夏合宿用のRaftレポジトリです。
 
 ### 2日目以降
 
-Pythonを用いた実装
+Pythonを用いたRaftの実装
 
 - [このレポジトリのファイル構成について(4-repo.md)](4-repo.md)
 - [ハンズオンの説明(5-handson.md)](5-handson.md)
@@ -53,4 +53,4 @@ Pythonを用いた実装
 
 ## 問い合わせ
 
-moz [at] sfc.wide.ad.jp
+moz [at] sfc.sfc.ac.jp

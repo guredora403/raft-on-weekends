@@ -7,7 +7,7 @@ MD_FILES = 0-intro.md 1-parallel-pcoessing.md 2-consistency.md 3-raft.md 4-repo.
 PDF_FILES = $(patsubst %.md, ./dist/%.pdf, $(MD_FILES))
 
 # 結合後のPDFファイル名
-MERGED_PDF = ./dist/merged_output.pdf
+MERGED_PDF = ./dist/merged_slides.pdf
 
 
 # デフォルトターゲット
@@ -16,7 +16,7 @@ all: $(PDF_FILES) $(MERGED_PDF)
 # 出力ディレクトリを確認してPDFに変換するルール
 ./dist/%.pdf: %.md
 	mkdir -p ./dist
-	marp $< --pdf --allow-local-files --output $@
+	marp $< --pdf --allow-local-files --theme ./marp_themes/delight.css --output $@
 
 # PDFを結合するルール
 $(MERGED_PDF): $(PDF_FILES)
