@@ -3,7 +3,7 @@ marp: true
 title: Raft on Weekend
 paginate: true
 footer: 'Riku Mochizuki moz [at] sfc.keio.ac.jp'
-header: '2024/08/26 慶應義塾大学 SFC Delight 分散システムグループ  #イントロ'
+header: '2025/02/09 慶應義塾大学 SFC Delight 分散システムグループ  #イントロ'
 theme: delight
 ---
 
