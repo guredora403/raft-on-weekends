@@ -16,7 +16,7 @@ moz [at] sfc.keio.ac.jp
 
 ## はじめに
 
-Delightの夏合宿用のRaftレポジトリです。  
+Delightの春合宿用のRaftレポジトリです。  
 このレポジトリではRaftの実装を行います。  
 座学と実装はこのスライドに沿って行います。
 
