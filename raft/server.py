@@ -4,16 +4,16 @@ from .logger import logger
 from .state import State
 
 
-async def register_as_server(addresses, loop):
-    for address in addresses:
+async def register_as_server(names, addresses, loop):
+    for address, name in zip(addresses, names):
         if address not in Node.cluster:
-            node = Node(*address, loop, is_client=False)
+            node = Node(name, *address, loop, is_client=False)
             await node.start()
 
-async def register_as_client(addresses, loop):
-    for address in addresses:
+async def register_as_client(names, addresses, loop):
+    for address, name in zip(addresses, names):
         if address not in Node.cluster:
-            node = Node(*address, loop, is_client=True)
+            node = Node(name, *address, loop, is_client=True)
             await node.start()
 
 
@@ -25,11 +25,12 @@ def stop():
 class Node:
     cluster = []
 
-    def __init__(self, host, port, loop, is_client=False):
-        self.host = host
-        self.port = port
+    def __init__(self, name, host, port, loop, is_client=False):
+        self.name = name # ノード名
+        self.host = host # ホスト名
+        self.port = port # ポート番号
         self.loop = loop or asyncio.get_event_loop()
-        self.is_client = is_client
+        self.is_client = is_client # クライアントかどうか
         self.request = asyncio.Queue()
         self.__class__.cluster.append(self)
         self.state = State(self) if not is_client else None
@@ -47,16 +48,17 @@ class Node:
             self.transport, _ = await asyncio.Task(
             self.loop.create_datagram_endpoint(protocol, local_addr=address),
             loop=self.loop)
+            logger.info("Listeing on {}:{}".format(address[0], address[1]))
             
             # Start the state machine
             self.loop.create_task(self.state.start())
-            logger.info("Starting node on {}:{}".format(address[0], address[1]))
+            # logger.info("Starting node on {}:{}".format(address[0], address[1]))
 
     def stop(self):
         self.transport.close()
 
     def request_handler(self, data):
-        self.state.request_handler(data)
+        self.state.receive(data)
 
 
     async def send(self, data):

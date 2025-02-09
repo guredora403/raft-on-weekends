@@ -4,7 +4,7 @@ import yaml
 def generate_docker_compose(num_nodes):
     services = {}
     network_name = 'raft-network'
-    host_base_port = 8080
+    host_base_port = 3333
 
     for i in range(1, num_nodes + 1):
         node_name = f'node{i}'
@@ -19,7 +19,7 @@ def generate_docker_compose(num_nodes):
                 f'CLUSTER={cluster}'
             ],
             'ports': [f'{host_port}:8080'],
-            'command': ["python", "run_node.py", "--node", ipv4_address, "--cluster", cluster],
+            'command': ["python", "run_node.py", "--node", ipv4_address, "--cluster", cluster, "--name", node_name],
             'networks': {
                 network_name: {
                     'ipv4_address': ipv4_address

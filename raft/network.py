@@ -24,7 +24,8 @@ class UDPProtocol(asyncio.DatagramProtocol):
 
     def datagram_received(self, data, addr):
        data = self.serializer.unpack(data)
-       data.update({"sender": addr})
+       logger.info('Received %r from %s' % (data, addr[0]))
+       data.update({"sender": self._convert_ipv4_to_name(addr[0])})
        self.request_handler(data)
 
     def error_received(self, exc):
@@ -32,8 +33,7 @@ class UDPProtocol(asyncio.DatagramProtocol):
 
     def connection_lost(self, exc):
         logger.warning('Connection lost:', exc)
-
-
-def convert_ipv4_to_hostname(ip):
-    node_id = str(int(ip.split('.')[3])-1)
-    return f"node{node_id}"
+        
+    def _convert_ipv4_to_name(self, ip):
+        node_id = str(int(ip.split('.')[3])-1)
+        return f"node{node_id}"
