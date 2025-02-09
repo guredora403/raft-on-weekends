@@ -24,7 +24,6 @@ class UDPProtocol(asyncio.DatagramProtocol):
 
     def datagram_received(self, data, addr):
        data = self.serializer.unpack(data)
-       logger.info('Received %r from %s' % (data, addr[0]))
        data.update({"sender": self._convert_ipv4_to_name(addr[0])})
        self.request_handler(data)
 
