@@ -1,10 +1,13 @@
 import sys
 import yaml
+import json
 
 def generate_docker_compose(num_nodes):
     services = {}
     network_name = 'raft-network'
     host_base_port = 3333
+
+    node_portlist = {}
 
     for i in range(1, num_nodes + 1):
         node_name = f'node{i}'
@@ -26,6 +29,7 @@ def generate_docker_compose(num_nodes):
                 }
             }
         }
+        node_portlist[node_name] = host_port
 
     docker_compose = {
         'version': '3.8',
@@ -47,7 +51,10 @@ def generate_docker_compose(num_nodes):
     # Write the docker-compose.yml file
     with open('docker-compose.yml', 'w') as file:
         yaml.dump(docker_compose, file, default_flow_style=False)
+    with open('node_portlist.json', 'w') as file:
+        json.dump(node_portlist, file)
     print(f'docker-compose.yml with {num_nodes} nodes generated successfully.')
+    print(f'node_portlist.json with {num_nodes} nodes generated successfully.')
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:

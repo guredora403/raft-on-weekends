@@ -8,12 +8,14 @@ async def register_as_server(names, addresses, loop):
     for address, name in zip(addresses, names):
         if address not in Node.cluster:
             node = Node(name, *address, loop, is_client=False)
+            logger.info("Starting {} as a server".format(name))
             await node.start()
 
 async def register_as_client(names, addresses, loop):
     for address, name in zip(addresses, names):
         if address not in Node.cluster:
             node = Node(name, *address, loop, is_client=True)
+            logger.info("Starting {} as a client".format(name))
             await node.start()
 
 
