@@ -21,7 +21,7 @@ def generate_docker_compose(num_nodes):
                 f'NODE={node_name}',
                 f'CLUSTER={cluster}'
             ],
-            'ports': [f'{host_port}:8080'],
+            'ports': [f'{host_port}:8080/udp'],
             'command': ["python", "run_node.py", "--node", ipv4_address, "--cluster", cluster, "--name", node_name],
             'networks': {
                 network_name: {

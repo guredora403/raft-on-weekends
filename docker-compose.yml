@@ -14,18 +14,18 @@ services:
     - --node
     - 10.0.0.2
     - --cluster
-    - node2,node3,node4,node5
+    - node2,node3
     - --name
     - node1
     container_name: node1
     environment:
     - NODE=node1
-    - CLUSTER=node2,node3,node4,node5
+    - CLUSTER=node2,node3
     networks:
       raft-network:
         ipv4_address: 10.0.0.2
     ports:
-    - 3333:8080
+    - 3333:8080/udp
   node2:
     build: .
     command:
@@ -34,18 +34,18 @@ services:
     - --node
     - 10.0.0.3
     - --cluster
-    - node1,node3,node4,node5
+    - node1,node3
     - --name
     - node2
     container_name: node2
     environment:
     - NODE=node2
-    - CLUSTER=node1,node3,node4,node5
+    - CLUSTER=node1,node3
     networks:
       raft-network:
         ipv4_address: 10.0.0.3
     ports:
-    - 3334:8080
+    - 3334:8080/udp
   node3:
     build: .
     command:
@@ -54,56 +54,16 @@ services:
     - --node
     - 10.0.0.4
     - --cluster
-    - node1,node2,node4,node5
+    - node1,node2
     - --name
     - node3
     container_name: node3
     environment:
     - NODE=node3
-    - CLUSTER=node1,node2,node4,node5
+    - CLUSTER=node1,node2
     networks:
       raft-network:
         ipv4_address: 10.0.0.4
     ports:
-    - 3335:8080
-  node4:
-    build: .
-    command:
-    - python
-    - run_node.py
-    - --node
-    - 10.0.0.5
-    - --cluster
-    - node1,node2,node3,node5
-    - --name
-    - node4
-    container_name: node4
-    environment:
-    - NODE=node4
-    - CLUSTER=node1,node2,node3,node5
-    networks:
-      raft-network:
-        ipv4_address: 10.0.0.5
-    ports:
-    - 3336:8080
-  node5:
-    build: .
-    command:
-    - python
-    - run_node.py
-    - --node
-    - 10.0.0.6
-    - --cluster
-    - node1,node2,node3,node4
-    - --name
-    - node5
-    container_name: node5
-    environment:
-    - NODE=node5
-    - CLUSTER=node1,node2,node3,node4
-    networks:
-      raft-network:
-        ipv4_address: 10.0.0.6
-    ports:
-    - 3337:8080
+    - 3335:8080/udp
 version: '3.8'
