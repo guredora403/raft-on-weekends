@@ -38,10 +38,10 @@ class State:
             if received_message["type"] == "appended":
                 index = received_message["index"]
                 self.appended_node_counts[index] += 1
-                if self.appended_node_counts[index] == 2:
+                if self.appended_node_counts[index] == 3:
                     self.statemachine[self.logs[index]["key"]] = self.logs[index]["value"]
                     self.commited_index = received_message["index"]
-                    logger.info(f"commit log: {self.logs[self.commited_index]} index: {self.commited_index}")
+                    logger.info("commited, current state: ".format(self.statemachine))
 
                     self.loop.create_task(self.node.broadcast({"type": "commited", "index": self.commited_index}))
 
